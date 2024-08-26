@@ -3,7 +3,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { BsMoonStars } from "react-icons/bs";
 import { CiMenuBurger } from "react-icons/ci";
 
-export default function Navbar() {
+const Navbar = () => {
 
 
     return (
@@ -37,6 +37,6 @@ export default function Navbar() {
     );
 }
 
-
+export default Navbar;
 
 
