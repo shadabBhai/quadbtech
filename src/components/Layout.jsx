@@ -8,7 +8,7 @@ const Layout = () => {
     return (
         <div>
             <Navbar />
-            <div className='ml-[20vw] grid grid-flow-col '>
+            <div className="grid grid-cols-3 w-full ">
                 <Profile />
                 <Todo />
                 <Action />
