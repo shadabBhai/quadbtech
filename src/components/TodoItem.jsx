@@ -1,26 +1,25 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTasks, toggleTaskDone, toggleTaskImportant } from '../redux/todoSlices';
 import { FaStar } from 'react-icons/fa';
 
-const TodoItem = () => {
-    const [tasks, setTasks] = useState([
-        { id: 1, text: 'Learn React', isDone: false, isImportant: false },
-        { id: 2, text: 'Build a To-Do App', isDone: false, isImportant: false },
-    ]);
+const TodoList = () => {
+    const dispatch = useDispatch();
+    const tasks = useSelector(state => state.todo.tasks);
+    const status = useSelector(state => state.todo.status);
+    const error = useSelector(state => state.todo.error);
 
-    const toggleTaskDone = (taskId) => {
-        setTasks(tasks.map(task =>
-            task.id === taskId ? { ...task, isDone: !task.isDone } : task
-        ));
-    };
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchTasks());
+        }
+    }, [dispatch, status]);
 
-    const toggleTaskImportant = (taskId) => {
-        setTasks(tasks.map(task =>
-            task.id === taskId ? { ...task, isImportant: !task.isImportant } : task
-        ));
-    };
+    if (status === 'loading') return <div>Loading...</div>;
+    if (status === 'failed') return <div>Error: {error}</div>;
 
     return (
-        <div className="p-4  mx-auto">
+        <div className="p-4 mx-auto">
             <ul>
                 {tasks.map(task => (
                     <li key={task.id} className="flex items-center justify-between mb-2 p-2 border-b border-gray-300">
@@ -28,14 +27,14 @@ const TodoItem = () => {
                             <input
                                 type="checkbox"
                                 checked={task.isDone}
-                                onChange={() => toggleTaskDone(task.id)}
+                                onChange={() => dispatch(toggleTaskDone(task.id))}
                                 className="mr-2 h-4 w-4"
                             />
                             <span className={`${task.isDone ? 'line-through text-gray-500' : ''}`}>
                                 {task.text}
                             </span>
                         </div>
-                        <button onClick={() => toggleTaskImportant(task.id)}>
+                        <button onClick={() => dispatch(toggleTaskImportant(task.id))}>
                             <FaStar
                                 className={`text-xl ${task.isImportant ? 'text-black' : 'text-gray-300'} hover:text-gray-800`}
                             />
@@ -47,4 +46,4 @@ const TodoItem = () => {
     );
 };
 
-export default TodoItem;
+export default TodoList;
