@@ -67,9 +67,14 @@ Redux: A predictable state container for JavaScript apps.
 Redux Toolkit: The official, recommended way to write Redux logic.
 
 ## Screenshot  of th web app
+```
+
 ![Screenshot of the Todo App](./public/1.png)
 
 ![Screenshot of the Todo App](./public/2.png)
 ![Screenshot of the Todo App](./public/3.png)
 ![Screenshot of the Todo App](./public/4.png)
+
+```
+
 ```
