@@ -7,13 +7,15 @@ const compeletedSlice = createSlice({
       userId: 1,
       id: 3,
       title: "fugiat veniam minus",
-      completed: false,
+      isDone: false,
+      isImportant: false,
     },
     {
       userId: 1,
       id: 4,
       title: "et porro tempora",
-      completed: true,
+      isDone: false,
+      isImportant: false,
     },
   ],
   reducers: {

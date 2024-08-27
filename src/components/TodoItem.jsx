@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { FaStar } from 'react-icons/fa';
 import { done } from '../redux/compeletedSlice';
-import { removeTodo } from '../redux/todoSlices';
+import { removeTodo, toggleTaskImportant } from '../redux/todoSlices';
 
 
 
@@ -16,7 +16,14 @@ const TodoItem = () => {
         dispatch(done(itemToDone))
         dispatch(removeTodo(taskId))
 
+
     };
+    const handleImportant = (taskId) => {
+
+        dispatch(toggleTaskImportant(taskId))
+
+    }
+
 
 
     return (
@@ -39,11 +46,13 @@ const TodoItem = () => {
                                 <span className={`${task.isDone ? 'line-through text-gray-500' : ''}`}>
                                     {task.title}
                                 </span>
-                                <p>
+                                <button onClick={() => handleImportant(task.id)}>
                                     <FaStar
                                         className={`text-xl ${task.isImportant ? 'text-yellow-500' : 'text-gray-300'} hover:text-yellow-400`}
                                     />
-                                </p>
+                                </button>
+
+
                             </div>
 
 
