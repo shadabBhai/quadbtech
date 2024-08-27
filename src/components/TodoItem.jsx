@@ -18,11 +18,6 @@ const TodoItem = () => {
 
     };
 
-    const toggleTaskImportant = (taskId) => {
-        setTasks(tasks.map(task =>
-            task.id === taskId ? { ...task, isImportant: !task.isImportant } : task
-        ));
-    };
 
     return (
         <>
@@ -34,7 +29,7 @@ const TodoItem = () => {
                         className="max-w-sm mx-full m-[1vw] bg-white shadow-lg rounded-lg overflow-hidden my-4 "
                     >
                         <div className="p-4">
-                            <div className="flex justify-between ">
+                            <div className="flex justify-self-center ">
                                 <input
                                     type="checkbox"
                                     checked={task.isDone}
@@ -50,9 +45,7 @@ const TodoItem = () => {
                                     />
                                 </p>
                             </div>
-                            <button onClick={() => toggleTaskImportant(task.id)}>
 
-                            </button>
 
 
                         </div>
