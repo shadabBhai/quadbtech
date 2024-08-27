@@ -3,7 +3,7 @@ import { FaStar } from 'react-icons/fa';
 
 const CompeletedTodo = () => {
     const CompeletedTask = useSelector(state => state.compeleted)
-    console.log(CompeletedTask)
+
     return (
         <>
 

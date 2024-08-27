@@ -1,16 +1,18 @@
-import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function CircularGraph() {
+const CircularGraph = () => {
+    const pendingLength = (useSelector(state => state.todo.todos)).length;
+    const compeletedLength = (useSelector(state => state.compeleted)).length
     const data = {
         labels: ['Done', 'Pending'],
         datasets: [
             {
                 label: 'Task Status',
-                data: [50, 30],
+                data: [pendingLength, compeletedLength],
                 backgroundColor: ['#4CAF50', '#F44336'],
                 hoverBackgroundColor: ['#66BB6A', '#EF5350'],
                 borderWidth: 1,
@@ -37,3 +39,5 @@ export default function CircularGraph() {
         </div>
     );
 }
+
+export default CircularGraph
