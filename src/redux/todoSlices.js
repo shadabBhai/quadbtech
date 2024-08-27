@@ -1,56 +1,40 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
+//import { data } from "../utils/data.js";
 
-// Define an initial state
 const initialState = {
-  tasks: [],
-  status: "idle",
-  error: null,
+  todos: [
+    {
+      userId: 1,
+      id: 1,
+      title: "delectus aut autem",
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 2,
+      title: "quis ut nam facilis et officia qui",
+      completed: false,
+    },
+  ],
 };
 
-// Async thunk to fetch tasks from an API
-export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
-  const response = await axios.get(
-    "https://jsonplaceholder.typicode.com/todos/"
-  );
-  return response.data;
-});
-
-// Create a slice of the state
-const todoSlices = createSlice({
-  name: "todo",
+export const todoSlice = createSlice({
+  name: "todos",
   initialState,
   reducers: {
-    toggleTaskDone(state, action) {
-      const task = state.tasks.find((task) => task.id === action.payload);
-      if (task) {
-        task.isDone = !task.isDone;
-      }
+    addTodo: (state, action) => {
+      const todo = {
+        id: nanoid(),
+        title: action.payload,
+      };
+      state.todos.push(todo);
     },
-    toggleTaskImportant(state, action) {
-      const task = state.tasks.find((task) => task.id === action.payload);
-      if (task) {
-        task.isImportant = !task.isImportant;
-      }
+    removeTodo: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
-    // Add other reducers as needed
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchTasks.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchTasks.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.tasks = action.payload;
-      })
-      .addCase(fetchTasks.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      });
   },
 });
 
-export const { toggleTaskDone, toggleTaskImportant } = todoSlices.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 
-export default todoSlices.reducer;
+export default todoSlice.reducer;

@@ -3,8 +3,25 @@ import { FaRegBell } from "react-icons/fa";
 import { BsRepeat } from "react-icons/bs";
 import { CiCalendar } from "react-icons/ci";
 import TodoItem from "./TodoItem";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/todoSlices";
 
 const Todo = () => {
+    const [input, setInput] = useState('')
+    const dispatch = useDispatch()
+
+
+    const handleChangeData = (e) => {
+        setInput(e.target.value)
+    }
+
+    const handleAddTodo = (e) => {
+        e.preventDefault()
+        setInput(e.target.value)
+        dispatch(addTodo(input))
+        setInput('')
+    }
     return (
         <div className="bg-red-50 -ml-[13vw]" >
             {/* Heading */}
@@ -15,21 +32,23 @@ const Todo = () => {
                 </h1>
             </div>
             {/* add task  */}
-            <div className="border-b-2  ">
-                <input type="text" className="bg-transparent outline-none h-[23vh] w-full placeholder:text-3xl placeholder:pl-[2vw]" placeholder="Add A Task" />
-                <div className="flex justify-between">
-                    {/* icons */}
-                    <div className="text-3xl  flex space-x-8 ml-[2vw] cursor-pointer">
-                        <FaRegBell />
-                        <BsRepeat />
-                        <CiCalendar />
+            <form onSubmit={handleAddTodo}>
+                <div className="border-b-2  ">
+                    <input type="text" onChange={handleChangeData} className="bg-transparent outline-none h-[23vh]  text-4xl w-full pl-[2vw] placeholder:text-3xl placeholder:pl-[2vw]" placeholder="Add A Task" />
+                    <div className="flex justify-between">
+                        {/* icons */}
+                        <div className="text-3xl  flex space-x-8 ml-[2vw] cursor-pointer">
+                            <FaRegBell />
+                            <BsRepeat />
+                            <CiCalendar />
 
-                    </div >
-                    <button className="bg-[#357937] text-white font-semibold py-2 px-4 rounded-md shadow-lg m-[1vh] ">
-                        ADD TASK
-                    </button>
+                        </div >
+                        <button type="submit" className="bg-[#357937] text-white font-semibold py-2 px-4 rounded-md shadow-lg m-[1vh] " >
+                            ADD TASK
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
             {/*list of todo */}
             <div className="w-full">
                 <TodoItem />
