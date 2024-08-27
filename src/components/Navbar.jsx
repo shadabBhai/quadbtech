@@ -33,9 +33,9 @@ const Navbar = () => {
                         </div>
                         <div className="hidden sm:flex sm:ml-auto">
                             <div className="flex space-x-4">
-                                <p className="  px-3 py-2 rounded-md"><PiMagnifyingGlassLight style={{ fontSize: '24px' }} /></p>
-                                <p className=" px-3 py-2 rounded-md text-sm font-medium"><CgMenuGridO style={{ fontSize: '24px' }} onClick={handleAction} /></p>
-                                <p className="  px-3 py-2 rounded-md text-sm font-medium"><BsMoonStars style={{ fontSize: '24px' }} /></p>
+                                <p className="  px-3 py-2 rounded-md cursor-pointer"><PiMagnifyingGlassLight style={{ fontSize: '24px' }} /></p>
+                                <p className=" px-3 py-2 rounded-md text-sm font-medium cursor-pointer"><CgMenuGridO style={{ fontSize: '24px' }} onClick={handleAction} /></p>
+                                <p className="  px-3 py-2 rounded-md text-sm font-medium cursor-pointer"><BsMoonStars style={{ fontSize: '24px' }} /></p>
 
                             </div>
                         </div>

@@ -4,13 +4,16 @@ import { BsRepeat } from "react-icons/bs";
 import { CiCalendar } from "react-icons/ci";
 import TodoItem from "./TodoItem";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/todoSlices";
 import CompeletedTodo from "./CompeletedTodo";
 
 const Todo = () => {
     const [input, setInput] = useState('')
     const dispatch = useDispatch()
+    const isProfileVisible = useSelector(state => state.responsive.isProfileVisible)
+    const isActionVisible = useSelector(state => state.responsive.isActionVisible)
+
 
 
     const handleChangeData = (e) => {
@@ -24,7 +27,7 @@ const Todo = () => {
         setInput('')
     }
     return (
-        <div className="bg-red-50 -ml-[13vw]" >
+        <div className={`${!isProfileVisible && isActionVisible ? "w-[52vw] ml-[1vw] mr-[1vw]" : !isActionVisible && !isProfileVisible ? "ml-[2vw] mr-[2vw]" : !isActionVisible && isProfileVisible ? "w-[75vw] col-span-4 -ml-[12vw] " : " -ml-[13vw]"}`} >
             {/* Heading */}
             <div className="flex items-end border-b-2 border-gray-300 pt-[7vh] pb-[1vh] ">
                 <h1 className="text-lg font-semibold">To Do</h1>

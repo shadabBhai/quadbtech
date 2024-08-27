@@ -14,13 +14,25 @@ const Layout = () => {
         <div>
             <Navbar />
             <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {isProfileVisible && <Profile />}
-                {!isProfileVisible && !isActionVisible ? (
-                    <Todo className="w-full " />
-                ) : (
-                    <Todo className="col-span-2 md:col-span-1" />
-                )}
-                {isActionVisible && <Action />}
+                {/* Profile Section */}
+                {isProfileVisible && <Profile className="col-span-1" />}
+
+                {/* Todo Section */}
+                <div
+                    className={`${!isProfileVisible && !isActionVisible
+                        ? "col-span-1 lg:col-span-3"
+                        : isProfileVisible && !isActionVisible
+                            ? "col-span-2 md:col-span-1"
+                            : !isProfileVisible && isActionVisible
+                                ? "col-span-2  md:col-span-1"
+                                : "col-span-1"
+                        }`}
+                >
+                    <Todo />
+                </div>
+
+                {/* Action Section */}
+                {isActionVisible && <Action className="col-span-1" />}
             </div>
         </div>
     )
