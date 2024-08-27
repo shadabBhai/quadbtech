@@ -69,7 +69,7 @@ Redux Toolkit: The official, recommended way to write Redux logic.
 ## Screenshot  of th web app
 
 ![Screenshot of the Todo App](assets/1.png)
-![Screenshot of the Todo App](./assets/2.png)
-![Screenshot of the Todo App](./assets/3.png)
-![Screenshot of the Todo App](./assets/4.png)
+![Screenshot of the Todo App](assets/2.png)
+![Screenshot of the Todo App](assets/3.png)
+![Screenshot of the Todo App](assets/4.png)
 ```
