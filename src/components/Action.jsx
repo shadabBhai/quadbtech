@@ -14,8 +14,8 @@ const Action = () => {
     const isProfileVisible = useSelector(state => state.responsive.isProfileVisible)
     const isActionVisible = useSelector(state => state.responsive.isActionVisible)
     return (
-        <div className={`${!isProfileVisible && isActionVisible ? "ml-[23vw] col-span-2 bg-[#EEF6EF] pt-[10vh] " : "bg-[#EEF6EF] pt-[10vh]"}`}>
-            <div className=" ">
+        <div className={`${!isProfileVisible && isActionVisible ? "ml-[23vw] col-span-2 bg-[#EEF6EF] pt-[10vh]  dark:bg-black dark:text-white " : "bg-[#EEF6EF] pt-[10vh]  dark:bg-black dark:text-white dark:border-solid-white"}`}>
+            <div className=" dark:bg-black dark:text-white ">
                 <ul className="pl-[3vh] pt-[3vh] space-y-8">
                     <li className="border-t-2  flex  justify-between pt-[3vh] ">
 

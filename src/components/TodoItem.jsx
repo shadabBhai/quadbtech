@@ -29,11 +29,11 @@ const TodoItem = () => {
     return (
         <>
 
-            <div className="list-none flex flex-wrap">
+            <div className="list-none flex flex-wrap  dark:bg-black dark:text-white">
                 {todos.map((task) => (
                     <div
                         key={task.id}
-                        className="max-w-sm mx-full m-[1vw] bg-white shadow-lg rounded-lg overflow-hidden my-4 "
+                        className="max-w-sm mx-full m-[1vw] bg-white shadow-lg rounded-lg overflow-hidden my-4  dark:bg-black dark:text-white "
                     >
                         <div className="p-4">
                             <div className="flex justify-self-center ">

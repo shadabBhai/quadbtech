@@ -24,12 +24,12 @@ const Todo = () => {
         e.preventDefault()
         setInput(e.target.value)
         dispatch(addTodo(input))
-        setInput('')
+        setInput("")
     }
     return (
         <div className={`${!isProfileVisible && isActionVisible ? "w-[52vw] ml-[1vw] mr-[1vw]" : !isActionVisible && !isProfileVisible ? "ml-[2vw] mr-[2vw]" : !isActionVisible && isProfileVisible ? "w-[75vw] col-span-4 -ml-[12vw] " : " -ml-[13vw]"}`} >
             {/* Heading */}
-            <div className="flex items-end border-b-2 border-gray-300 pt-[7vh] pb-[1vh] ">
+            <div className="flex items-end border-b-2 border-gray-300 pt-[7vh] pb-[1vh] dark:bg-black dark:text-white ">
                 <h1 className="text-lg font-semibold">To Do</h1>
                 <h1 className=" text-lg">
                     <MdArrowDropDown />
@@ -54,7 +54,7 @@ const Todo = () => {
                 </div>
             </form>
             {/*list of todo */}
-            <div className="w-full">
+            <div className="w-full ">
                 <TodoItem />
             </div>
             {/* compeleted todo */}

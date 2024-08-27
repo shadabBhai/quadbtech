@@ -10,10 +10,11 @@ const Layout = () => {
     const isActionVisible = useSelector(state => state.responsive.isActionVisible)
 
 
+
     return (
-        <div>
+        <div className="dark:bg-black dark:text-white" >
             <Navbar />
-            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                 {/* Profile Section */}
                 {isProfileVisible && <Profile className="col-span-1" />}
 
