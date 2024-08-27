@@ -7,11 +7,15 @@ import { TbChecklist } from "react-icons/tb";
 import { IoMdAdd } from "react-icons/io";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import CircularGraph from "./CircularGraph";
+import { useSelector } from "react-redux";
 
 
 
 
 const Profile = () => {
+    const pendingLength = (useSelector(state => state.todo.todos)).length;
+    const compeletedLength = (useSelector(state => state.compeleted)).length
+    const totalTask = pendingLength + compeletedLength
     return (
         <div className="mt-[10vh] w-[20vw] h-[83vh] bg-[#EEF6EF] p-4">
             <div >
@@ -59,10 +63,10 @@ const Profile = () => {
                 <div className="mt-[2vh]">
                     <div className="p-[1vw] bg-white">
                         <div className=" flex  justify-between ">
-                            <div className="text-md font-bold">Today's Task</div>
+                            <div className="text-md font-bold">Today's Tasks</div>
                             <h3 className="text-1xl font-bold cursor-pointer"><IoInformationCircleOutline /></h3>
                         </div>
-                        <div className="text-3xl mb-2">11</div>
+                        <div className="text-3xl mb-2">{totalTask}</div>
                     </div>
                     <div className="mt-1 bg-white ">
                         <div className="lex justify-center items-center ">
