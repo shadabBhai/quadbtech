@@ -12,7 +12,7 @@ const Layout = () => {
 
 
     return (
-        <div className="dark:bg-black dark:text-white" >
+        <div className="dark:bg-black dark:text-white min-h-screen" >
             <Navbar />
             <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                 {/* Profile Section */}
@@ -35,6 +35,9 @@ const Layout = () => {
                 {/* Action Section */}
                 {isActionVisible && <Action className="col-span-1" />}
             </div>
+
+
+
         </div>
     )
 }
