@@ -1,18 +1,21 @@
 
 import { useSelector, useDispatch } from 'react-redux'
-// import { removeTodo } from '../redux/todoSlices'
 import { FaStar } from 'react-icons/fa';
+import { done } from '../redux/compeletedSlice';
+import { removeTodo } from '../redux/todoSlices';
+
 
 
 const TodoItem = () => {
     const todos = useSelector(state => state.todo.todos)
     // console.log(todos)
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const toggleTaskDone = (taskId) => {
-        setTasks(tasks.map(task =>
-            task.id === taskId ? { ...task, isDone: !task.isDone } : task
-        ));
+        const itemToDone = todos.find(task => task.id === taskId)
+        dispatch(done(itemToDone))
+        dispatch(removeTodo(taskId))
+
     };
 
     const toggleTaskImportant = (taskId) => {

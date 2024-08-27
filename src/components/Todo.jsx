@@ -6,6 +6,7 @@ import TodoItem from "./TodoItem";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todoSlices";
+import CompeletedTodo from "./CompeletedTodo";
 
 const Todo = () => {
     const [input, setInput] = useState('')
@@ -54,9 +55,11 @@ const Todo = () => {
                 <TodoItem />
             </div>
             {/* compeleted todo */}
-            <div>
+            <div className="w-full">
                 <h1>Compeleted</h1>
+                <CompeletedTodo />
             </div>
+
 
         </div>
     )
