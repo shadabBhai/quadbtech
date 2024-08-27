@@ -27,31 +27,38 @@ const TodoItem = () => {
     return (
         <>
 
-            <ul className="list-none">
+            <div className="list-none flex flex-wrap">
                 {todos.map((task) => (
-                    <li
+                    <div
                         key={task.id}
-                        className="flex items-center justify-between mb-2 p-2 border-b border-gray-300"
+                        className="max-w-sm mx-full m-[1vw] bg-white shadow-lg rounded-lg overflow-hidden my-4 "
                     >
-                        <div className="flex items-center">
-                            <input
-                                type="checkbox"
-                                checked={task.isDone}
-                                onChange={() => toggleTaskDone(task.id)}
-                                className="mr-2 h-4 w-4"
-                            />
-                            <span className={`${task.isDone ? 'line-through text-gray-500' : ''}`}>
-                                {task.title}
-                            </span>
+                        <div className="p-4">
+                            <div className="flex justify-between ">
+                                <input
+                                    type="checkbox"
+                                    checked={task.isDone}
+                                    onChange={() => toggleTaskDone(task.id)}
+                                    className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                                />
+                                <span className={`${task.isDone ? 'line-through text-gray-500' : ''}`}>
+                                    {task.title}
+                                </span>
+                                <p>
+                                    <FaStar
+                                        className={`text-xl ${task.isImportant ? 'text-yellow-500' : 'text-gray-300'} hover:text-yellow-400`}
+                                    />
+                                </p>
+                            </div>
+                            <button onClick={() => toggleTaskImportant(task.id)}>
+
+                            </button>
+
+
                         </div>
-                        <button onClick={() => toggleTaskImportant(task.id)}>
-                            <FaStar
-                                className={`text-xl ${task.isImportant ? 'text-yellow-500' : 'text-gray-300'} hover:text-yellow-400`}
-                            />
-                        </button>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </>
     )
 }
